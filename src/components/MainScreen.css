@@ -1,0 +1,57 @@
+.main-screen {
+    position: relative;
+    width: 100vw;
+    height: calc(100vh - 6vh); /* Full height minus the bottom bar */
+    background-image: url('/Wallpaper.png');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    overflow: hidden; /* Prevent unnecessary scrolling */
+}
+
+.bottom {
+    height: 6vh;
+    width: 100vw;
+    background-color: #F0F4F8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icons {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    align-items: center;
+    width: 90%; /* Ensure icons are contained within the bottom bar */
+    max-width: 1200px; /* Limit maximum width for larger screens */
+    padding: 0 10px;
+}
+
+.icons img {
+    width: 5vw; /* Use relative units for size */
+    max-width: 30px; /* Limit maximum size for larger screens */
+    height: auto; /* Maintain aspect ratio */
+    margin: 5px;
+    transition: transform 0.3s ease; /* Smooth hover effect */
+}
+
+.icons img:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+/* Media Queries for smaller screens */
+@media (max-width: 768px) {
+    .icons img {
+        width: 7vw; /* Increase size slightly on smaller screens */
+        max-width: 25px;
+    }
+
+    .icons {
+        justify-content: space-between; /* Spread icons more evenly */
+    }
+}
