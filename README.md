@@ -18,7 +18,7 @@ Welcome to **Win Folio**! This is a React-based portfolio application designed t
 ## Installation
 To get started with the project, clone the repository and install dependencies:
 ```bash
-git clone https://github.com/yourusername/win-folio.git
+git clone https://github.com/muffakiribnhamid/win-folio.git
 cd win-folio
 npm install
 npm run dev
@@ -38,4 +38,4 @@ If you would like to contribute to this project, please fork the repository and 
 This project is licensed under the MIT License. 📜
 
 ## Contact
-For any inquiries, please reach out via email at [your-email@example.com](mailto:your-email@example.com). 📧
+For any inquiries, please reach out via email at [muffakir63@gmail.com](mailto:muffakir63@gmail.com). 📧
