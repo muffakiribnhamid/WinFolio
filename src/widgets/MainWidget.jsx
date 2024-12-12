@@ -5,6 +5,7 @@ import AppLayout from './AppLayout';
 import Projects from './Projects.jsx'; // Example component for Projects
 import AboutMe from './AboutMe.jsx'; // Example component for About Me
 import Socials from './Socials.jsx'; // Example component for Socials
+import Contact from './Contact.jsx';
 // Import other components as needed...
 
 const iconData = [
@@ -41,15 +42,36 @@ const MainWidget = ({ isVisible }) => {
       case "Socials":
         setCurrentContent(<Socials />);
         break;
+      case "Contact":
+        setCurrentContent(<Contact />);
+        break;
+
+      case "Github":
+        window.open("https://github.com/muffakiribnhamid");
+        break;
+      case "Code":
+        window.open("https://codepen.io");
+        break;
+      case "Photoshop":
+        window.open("https://www.adobe.com/products/photoshop.html");
+        break;
+      case "Excel":
+        window.open("https://www.microsoft.com/en-in/microsoft-365/excel");
+        break;
+      case "Word":
+        window.open("https://www.microsoft.com/en-in/microsoft-365/word");
+        break;
+      case "Edge":
+        window.open("https://www.microsoft.com/en-in/microsoft-365/edge");
+        break;
       // Add cases for other icons as needed
-      default:
-        setCurrentContent(null);
+     
     }
   };
 
   if (isMaximized) {
     return (
-      <AppLayout>{currentContent}</AppLayout>
+      <AppLayout setIsMaximized={setIsMaximized}>{currentContent}</AppLayout>
     );
   }
 
@@ -62,8 +84,9 @@ const MainWidget = ({ isVisible }) => {
         <input
           className='min-w-full p-3 rounded-md'
           type="text"
-          placeholder="Type here to search"
+          placeholder="Type here to search ..."
           value={searchTerm}
+
           onChange={(e) => setSearchTerm(e.target.value)}
         />
       </div>

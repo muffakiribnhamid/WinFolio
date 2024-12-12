@@ -1,46 +1,68 @@
 .app-layout {
-    width: 800px; /* Width of the app window */
-    height: 600px; /* Height of the app window */
-    border: 1px solid #ccc; /* Border around the window */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Shadow for depth */
-    background-color: #fff; /* Background color */
-    position: absolute; /* Allow absolute positioning */
-    left: 50%; /* Center horizontally */
-    top: 50%; /* Center vertically */
-    transform: translate(-50%, -50%); /* Adjust for centering */
-}
-
-.top-bar {
+    width: 800px;
+    height: 600px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    overflow: hidden; /* Prevent overflow from content */
+  }
+  
+  .top-bar {
     display: flex;
-    justify-content: flex-end; /* Align controls to the right */
-    background-color: #0078D4; /* Top bar color */
-    color: white; /* Text color */
-    padding: 10px; /* Padding around the top bar */
-    border-top-left-radius: 8px; /* Rounded corners */
-    border-top-right-radius: 8px; /* Rounded corners */
-    cursor: move; /* Indicate that the top bar is draggable */
-}
-
-.window-controls {
+    justify-content: flex-end;
+    align-items: center;
+    background-color: #0078d4;
+    color: white;
+    padding: 8px 10px;
+    cursor: move;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+  
+  .window-controls {
     display: flex;
-}
-
-.control-button {
-    background: none; /* No background */
-    border: none; /* No border */
-    color: white; /* Text color */
-    font-size: 16px; /* Font size */
-    margin-left: 10px; /* Space between buttons */
-    cursor: pointer; /* Pointer cursor on hover */
-}
-
-.control-button:hover {
-    opacity: 0.7; /* Slightly transparent on hover */
-}
-
-.content {
-    padding: 20px; /* Padding for content area */
-    height: calc(100% - 40px); /* Adjust height to account for the top bar */
-    overflow: auto; /* Scroll if content overflows */
-}
+    gap: 8px;
+  }
+  
+  .control-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+  }
+  
+  .control-button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  .control-button.close:hover {
+    background-color: red;
+  }
+  
+  .control-button.minimize:hover {
+    background-color: yellow;
+    color: black;
+  }
+  
+  .control-button.maximize:hover {
+    background-color: green;
+  }
+  
+  .content {
+    padding: 20px;
+    height: calc(100% - 40px);
+    overflow: auto;
+  }
+  

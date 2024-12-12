@@ -1,20 +1,35 @@
-import React from 'react';
+import React from 'react'
 
 const Projects = () => {
   return (
     <div>
-      <h1 className='text-2xl font-bold mb-4 text-red-500'>Here are some of my projects:</h1>
-      <p className='text-2xl cursor-pointer project-item transition duration-300 ease-in-out hover:border hover:border-black hover:rounded-lg hover:p-1'>
-        <span className='text-red-500'><a href="https://memeify-muffakir.netlify.app/">Memeify</a></span>: A next-level terminal UI meme generator
-      </p>
-      <p className='text-2xl mt-3 cursor-pointer project-item transition duration-300 ease-in-out hover:border hover:border-black hover:rounded-lg hover:p-1'>
-        <span className='text-red-500'><a href="https://mood-tracker-muffakir.netlify.app/">Mood Tracker</a></span>: A Mood Tracker Social App Made Using Firebase
-      </p>
-      <p className='text-2xl mt-3 cursor-pointer project-item transition duration-300 ease-in-out hover:border hover:border-black hover:rounded-lg hover:p-1'>
-        <span className='text-red-500'><a href="https://muffakir-tic-tac-toe.netlify.app/">Tic Tac Toe</a></span>: A Tic Tac Toe Game Made With Cool Design and AI Mode
-      </p>
+        <h1>Projects</h1>
+        <div onClick={() => window.open("https://memey-six.vercel.app/")} className="project rounded-md hover:border-2 hover:border-black hover:cursor-pointer  project1">
+          <img className='p-4' width={100} height={100} src="https://memey-six.vercel.app/mainicon.png" alt="" />
+            <div className="flex flex-col mt-5 content-center">
+              <h2 className='font-bold text-2xl text-black'>Memey</h2>
+              <p> A Meme Generator App - React and Vite</p>
+
+            </div>
+        </div>
+        <div onClick={() => window.open("https://mood-tracker-react-js.vercel.app/")} className="project rounded-md hover:border-2 hover:border-black hover:cursor-pointer  project1">
+          <img className='p-4' width={100} height={100} src="https://images.emojiterra.com/google/noto-emoji/unicode-15/color/512px/1f525.png" alt="" />
+            <div className="flex flex-col mt-5 content-center">
+              <h2 className='font-bold text-2xl text-black'>Mood Tracker</h2>
+              <p>Track Mood of People Online - React and Firebase</p>
+
+            </div>
+        </div>
+        <div onClick={() => window.open("https://tic-tac-toe-online-multiplayer-alpha.vercel.app/")} className="project rounded-md hover:border-2 hover:border-black hover:cursor-pointer  project1">
+          <img className='p-4' width={90} height={100} src="https://cdn-icons-png.flaticon.com/512/5791/5791753.png" alt="" />
+            <div className="flex flex-col mt-5 content-center">
+              <h2 className='font-bold text-2xl text-black'>Tic Tac Toe Deluxe</h2>
+              <p> A Modern UI based Tic Tac Toe Game - React</p>
+
+            </div>
+        </div>
     </div>
-  );
+  )
 }
 
-export default Projects;
+export default Projects

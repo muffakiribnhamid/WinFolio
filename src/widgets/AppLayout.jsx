@@ -1,18 +1,31 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import './AppLayout.css'; // Import CSS for styling
 
-const AppLayout = ({ children }) => {
+const AppLayout = ({ children, setIsMaximized }) => {
   const layoutRef = useRef(null);
   const [isDragging, setIsDragging] = useState(false);
   const [offset, setOffset] = useState({ x: 0, y: 0 });
+  const [clickTime, setClickTime] = useState(0); // Track time of last click
 
   const handleMouseDown = (e) => {
-    e.preventDefault(); // Prevent default behavior
-    setIsDragging(true);
-    setOffset({
-      x: e.clientX - layoutRef.current.getBoundingClientRect().left,
-      y: e.clientY - layoutRef.current.getBoundingClientRect().top,
-    });
+    const now = Date.now();
+    if (now - clickTime < 300) {
+      // If double-click detected, reset dragging
+      setIsDragging(false);
+      handleDoubleClick();
+      return;
+    }
+
+    setClickTime(now); // Update last click time
+
+    if (e.target.classList.contains('top-bar')) {
+      e.preventDefault();
+      setIsDragging(true);
+      setOffset({
+        x: e.clientX - layoutRef.current.getBoundingClientRect().left,
+        y: e.clientY - layoutRef.current.getBoundingClientRect().top,
+      });
+    }
   };
 
   const handleMouseMove = (e) => {
@@ -20,7 +33,6 @@ const AppLayout = ({ children }) => {
       requestAnimationFrame(() => {
         layoutRef.current.style.left = `${e.clientX - offset.x}px`;
         layoutRef.current.style.top = `${e.clientY - offset.y}px`;
-        layoutRef.current.style.position = 'absolute';
       });
     }
   };
@@ -29,42 +41,65 @@ const AppLayout = ({ children }) => {
     setIsDragging(false);
   };
 
+  const handleDoubleClick = () => {
+    console.log('Double-click detected');
+    handleMaximize(); // Use double-click to maximize the window
+  };
+
   const handleMinimize = () => {
     console.log('Minimize');
+    setIsMaximized(false);
     // Implement minimize functionality
   };
 
   const handleMaximize = () => {
     console.log('Maximize');
-    // Implement maximize functionality
+    layoutRef.current.style.left = '0px';
+    layoutRef.current.style.top = '0px';
+    layoutRef.current.style.width = '100vw';
+    layoutRef.current.style.height = '100vh';
+  };
+
+  const handleRestore = () => {
+    console.log('Restore');
+    layoutRef.current.style.width = '800px';
+    layoutRef.current.style.height = '600px';
+    layoutRef.current.style.left = '50%';
+    layoutRef.current.style.top = '50%';
+    layoutRef.current.style.transform = 'translate(-50%, -50%)';
   };
 
   const handleClose = () => {
     console.log('Close');
+    setIsMaximized(false);
     // Implement close functionality
   };
 
   return (
     <div
-      className='app-layout'
+      className="app-layout"
       ref={layoutRef}
+      onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
       onMouseLeave={handleMouseUp}
-      onMouseDown={handleMouseDown} // Allow dragging from anywhere in the layout
     >
-      <div className='top-bar'>
-        <div className='window-controls'>
-          <button onClick={handleMinimize} className='control-button'>_</button>
-          <button onClick={handleMaximize} className='control-button'>[]</button>
-          <button onClick={handleClose} className='control-button'>X</button>
+      <div className="top-bar">
+        <div className="window-controls">
+          <button onClick={handleMinimize} className="control-button minimize">
+            _
+          </button>
+          <button onClick={handleRestore} className="control-button maximize">
+            []
+          </button>
+          <button onClick={handleClose} className="control-button close">
+            X
+          </button>
         </div>
       </div>
-      <div className='content'>
-        {children} {/* This is where MainWidget will be rendered */}
-      </div>
+      <div className="content">{children}</div>
     </div>
   );
-}
+};
 
 export default AppLayout;
